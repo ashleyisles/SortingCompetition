@@ -9,16 +9,19 @@ using namespace std;
 SortingCompetition::SortingCompetition(const string& inputFileName)
 {
     setFileName(inputFileName);
-
 }
 
 void SortingCompetition::setFileName(const string& inputFileName)
 {
+    //Sets input file name
+
     inputName = inputFileName;
 }
 
 bool SortingCompetition::readData()
 {
+    //Creates vector with wrods from file
+
     ifstream inputFile;
     inputFile.open("mobyDick.txt");
     if(!inputFile.is_open())
@@ -36,15 +39,17 @@ bool SortingCompetition::readData()
 
 }
 
-
 bool SortingCompetition::prepareData()
 {
+
+    //Copies contents of vector into separate vector
     for(int i = 0; i < wordsList.size(); i++) {
         sortList.push_back(wordsList[i]);
     }
 
     for(int x = 0; x < sortList.size(); x++)
     {
+        //Lowercases all characters in each word so that words may be properly alphabetized
         for(int y = 0; y < sortList[x].size(); y++)
         {
             sortList[x][y] = tolower(sortList[x][y]);
@@ -55,35 +60,29 @@ bool SortingCompetition::prepareData()
 void SortingCompetition::sortData()
 {
     string temp;
+    //Sorts words by length
+
     for(int i = 0; i < sortList.size(); i++)
     {
-        for(int j = 0; j < sortList.size(); j++)
+        for(int j = 1 + i; j < sortList.size(); j++)
         {
-            if(sortList[j].size() >= sortList[i].size() && sortList[j] >= sortList[i])
+            if(sortList[j].size() < sortList[i].size())
             {
-                //if(sortList[j] > sortList[i])
-                //{
+                temp = sortList[i];
+                sortList[i] = sortList[j];
+                sortList[j] = temp;
+            }
+            if(sortList[j].size() == sortList[i].size())
+            {
+                if(sortList[j] < sortList[i])
+                {
                     temp = sortList[i];
                     sortList[i] = sortList[j];
                     sortList[j] = temp;
-                //}
+                }
             }
-
         }
-        /*for(j = i; j < sortList.size()-i-1; j++)
-        {
-            if(strlen(names[i]) > strlen(names[j+1]))
-            {
-                temp=names[i];
-                names[i]=names[j+1];
-                names[j+1]=temp;
-            }
-        }*/
-        //I stole this from Yahoo Answers, it's supposed to sort by length. I'm not sure how to implement it in our function though. Good luck, god speed.
     }
-
-    for(int x = 0; x < sortList.size(); x++)
-        cout << sortList[x] << " " << endl;
 }
 
 void SortingCompetition::outputData(const string& outputFileName)
