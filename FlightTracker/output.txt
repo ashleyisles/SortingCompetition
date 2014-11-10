@@ -1,0 +1,37 @@
+Flight 1: Dallas to Houston
+Leg 1: Dallas to San Antonio $92.20
+Leg 2: San Antonio to Houston $42.00
+Total Cost: $134.20
+
+Flight 2: Dallas to San Antonio
+Leg 1: Dallas to San Antonio $92.20
+Total Cost: $92.20
+
+Flight 3: Houston to New Orleans
+Leg 1: Houston to San Antonio $8.00
+Leg 2: San Antonio to Dallas $22.00
+Leg 3: Dallas to New Orleans $7.00
+Total Cost: $37.00
+
+Flight 4: Austin to Houston
+Leg 1: Austin to Dallas $99.00
+Leg 2: Dallas to San Antonio $92.20
+Leg 3: San Antonio to Houston $42.00
+Total Cost: $233.20
+
+Flight 5: Dallas to Corpus Christi
+Leg 1: Dallas to San Antonio $92.20
+Leg 2: San Antonio to Houston $42.00
+Leg 3: Houston to Corpus Christi $78.00
+Total Cost: $212.20
+
+Flight 6: Dallas to Paris
+Leg 1: Dallas to San Antonio $92.20
+Leg 2: San Antonio to Houston $42.00
+Leg 3: Houston to Corpus Christi $78.00
+Leg 4: Corpus Christi to Paris $400.00
+Total Cost: $612.20
+
+Flight 7: Dallas to Los Angeles
+Flight not possible.
+
