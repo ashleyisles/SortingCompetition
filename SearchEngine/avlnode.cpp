@@ -1,15 +1,15 @@
 #include "avlnode.h"
 
-AVLNode::AVLNode(string& word, int& ID) {
+AVLNode::AVLNode(char* &word, int &ID) {
 
     this->word = word;
     this->left = NULL;
     this->right = NULL;
     this->height = 0;
-    this->Ids = new int[10];
+    this->Ids = new int[100];
     this->Ids[0] = ID;
 
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < 100; i++) {
         this->Ids[i] = 0;
     }
 
@@ -40,9 +40,9 @@ AVLNode* AVLNode::addID(AVLNode* &node, int& ID) {
     while (node->Ids[i] != 0) {
 
         i += 1;
-        if (node->Ids[i] == ID) {
-            return node;
-        }
+//        if (node->Ids[i] == ID) {
+//            return node;
+//        }
     }
 
     if (node->Ids[i] == 0 && node->Ids[i + 1] != 0) {
@@ -64,14 +64,14 @@ void AVLNode::IncreaseArraySize(AVLNode* &node, int& i) {
     }
 
     delete[] node->Ids;
-    node->Ids = new int[i + 12];
+    node->Ids = new int[i * 2];
 
     for (int j = 0; j < i; j++) {
 
         node->Ids[j] = temp[j];
     }
 
-    for (int j = i + 1; j < i + 12; j++) {
+    for (int j = i + 1; j < i * 2; j++) {
 
         node->Ids[j] = 0;
     }

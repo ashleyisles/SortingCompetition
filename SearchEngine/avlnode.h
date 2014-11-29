@@ -15,13 +15,13 @@ private:
     AVLNode* left;
     AVLNode* right;
 
-    string word;
+    char* word;
     int height;
     int* Ids;
 
 
 public:
-    AVLNode(string& word, int& ID);
+    AVLNode(char *&word, int& ID);
     AVLNode(int& ID);
     AVLNode* addID(AVLNode* &node, int& ID);
     void IncreaseArraySize(AVLNode* &node, int& i);

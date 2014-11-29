@@ -15,7 +15,7 @@ void XMLParser::parse_file()
     AVLIndex idx;
     xml_document doc;
     xml_parse_result result = doc.load_file(file_name.c_str());
-    locale loc;
+    //locale loc;
 
     if(!result)
     {
@@ -108,12 +108,30 @@ void XMLParser::parse_file()
         }
 
         doc_list.push_back(doc_ptr);
-        cout << "\nDocument Title: " << doc_list[i] -> get_title() << "\nContributor: " << doc_list[i] -> get_contributor() << "\nID Number: " << doc_list[i] -> get_id() << "\nTimestamp: " << doc_list[i] -> get_timestamp() << "\nText: " << doc_list[i] -> get_text() << endl << endl << endl << endl;
-        string temp_title = doc_list[i] -> get_title();
-        idx.insertWord(temp_title, doc_list[i] -> get_id());
+        //cout << "\nDocument Title: " << doc_list[i] -> get_title() << "\nContributor: " << doc_list[i] -> get_contributor() << "\nID Number: " << doc_list[i] -> get_id() << "\nTimestamp: " << doc_list[i] -> get_timestamp() << "\nText: " << doc_list[i] -> get_text() << endl << endl << endl << endl;
+        //string temp_title = doc_list[i] -> get_title();
+        stringstream tempTitle(doc_list[i]->get_title());
+
+        while (tempTitle.good()) {
+
+            char *cstr;
+            string single;
+            getline(tempTitle, single, ' ');
+            cstr = new char[single.length() + 1];
+            strcpy(cstr, single.c_str());
+
+            idx.insertWord(cstr, doc_list[i] -> get_id());
+        }
+
+
+        //idx.insertWord(temp_title, doc_list[i] -> get_id());
 
         cout << "\n\nCOUNT!!! " << count << endl << endl;
         count++;
+
+        if (count == 80000) {
+            break;
+        }
 
     }
 //    cout << "Total Number of Documents: " << count << endl;

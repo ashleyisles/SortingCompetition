@@ -72,7 +72,7 @@ AVLIndex::AVLIndex()
 //    }
 //}
 
-AVLNode* AVLIndex::insertWord(string& nextWord, int ID) {
+AVLNode* AVLIndex::insertWord(char *&nextWord, int ID) {
 
     if (head == NULL) {
 
@@ -85,7 +85,7 @@ AVLNode* AVLIndex::insertWord(string& nextWord, int ID) {
     }
 }
 
-AVLNode* AVLIndex::insertWord(AVLNode* &cur, string& nextWord, int ID) {
+AVLNode* AVLIndex::insertWord(AVLNode* &cur, char *&nextWord, int ID) {
 
 
     if (cur == NULL) {
@@ -94,25 +94,25 @@ AVLNode* AVLIndex::insertWord(AVLNode* &cur, string& nextWord, int ID) {
         return cur;
     }
 
-//    int result = strcmp(nextWord, cur->word);
+    int result = strcmp(nextWord, cur->word);
 
-//    if (result == 0) {
+    if (result == 0) {
 
-//        cur->addID(cur, ID);
-//    }
-    if(nextWord == cur -> word)
-        cur -> addID(cur, ID);
+        cur->addID(cur, ID);
+    }
+//    if(nextWord == cur -> word)
+//        cur -> addID(cur, ID);
 
-    /*else if (result < 0)*/
-    else if(nextWord < cur -> word){
+    else if (result < 0) {
+    //else if(nextWord < cur -> word){
 
         cur->left = insertWord(cur->left, nextWord, ID);
 
         if (height(cur->left) - height(cur->right) == 2) {
 
-//            int result2 = strcmp(nextWord, cur->left->word);
-            /*if (result2 < 0)*/
-            if(nextWord < cur -> left -> word){
+            int result2 = strcmp(nextWord, cur->left->word);
+            if (result2 < 0) {
+            //if(nextWord < cur -> left -> word){
 
                 cur = rotateLeftOnce(cur);
             }
@@ -124,16 +124,16 @@ AVLNode* AVLIndex::insertWord(AVLNode* &cur, string& nextWord, int ID) {
         }
     }
 
-    /*else if (result > 0)*/
-    else if(nextWord > cur -> word){
+    else if (result > 0) {
+    //else if(nextWord > cur -> word){
 
         cur->right = insertWord(cur->right, nextWord, ID);
 
         if (height(cur->right) - height(cur->left) == 2) {
 
-//            int result3 = strcmp(nextWord, cur->right->word);
-            /*if (result3 > 0)*/
-            if(nextWord > cur -> right -> word){
+            int result3 = strcmp(nextWord, cur->right->word);
+            if (result3 > 0) {
+            //if(nextWord > cur -> right -> word){
 
                 cur = rotateRightOnce(cur);
             }

@@ -12,8 +12,8 @@ public:
     AVLNode* head;
     AVLIndex();
 
-    AVLNode* insertWord(string&, int);
-    AVLNode* insertWord(AVLNode*& , string&, int);
+    AVLNode* insertWord(char *&, int);
+    AVLNode* insertWord(AVLNode*& , char *&, int);
     int height(AVLNode*&);
     AVLNode* rotateLeftOnce(AVLNode*&);
     AVLNode* rotateLeftTwice(AVLNode*&);

@@ -1,0 +1,12 @@
+INPUT(
+./main.o
+./hashentry.o
+./hashmap.o
+./pugixml.o
+./xmlparser.o
+./document.o
+./stopwords.o
+./stemmer.o
+./avlindex.o
+./avlnode.o
+);
